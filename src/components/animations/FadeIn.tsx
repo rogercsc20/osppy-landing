@@ -1,15 +1,20 @@
 "use client";
 
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
-export default function FadeIn({ children, delay = 0 }) {
+interface FadeInProps {
+  children: ReactNode;
+  delay?: number;
+}
+
+export default function FadeIn({ children, delay = 0 }: FadeInProps) {
   return (
     <motion.div
-      initial={false}  
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px" }}
-      transition={{ duration: 0.6, delay }}
-      style={{ opacity: 0, transform: "translateY(12px)" }} // SSR-safe static styles
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut", delay }}
     >
       {children}
     </motion.div>
