@@ -1,0 +1,30 @@
+:root {
+  --osppy-bg: #050508;
+  --osppy-bg-elevated: #101017;
+
+  /* Premium OSPPY Blue Palette (Deep, Elegant, Clean) */
+  --osppy-primary: #4a5eff; /* main deep sapphire */
+  --osppy-primary-hover: #3E55D9;
+
+  /* Transparent versions for cards + accents */
+  --osppy-primary-soft: rgba(74, 94, 255, 0.15);
+  --osppy-primary-card: rgba(74, 94, 255, 0.22);
+
+  /* Premium glow */
+  --osppy-glow-strong: 0 0 60px rgba(74, 94, 255, 0.35);
+  --osppy-glow-soft: 0 0 30px rgba(74, 94, 255, 0.2);
+
+  /* Card elevation */
+  --osppy-card-hover: rgba(255, 255, 255, 0.04);
+  --osppy-card-border-hover: rgba(255, 255, 255, 0.18);
+
+  --osppy-text-secondary: rgba(255, 255, 255, 0.75);
+  --osppy-text-muted: rgba(255, 255, 255, 0.55);
+
+  --osppy-radius: 18px;
+  --osppy-max-width: 1120px;
+
+  --osppy-shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+  --osppy-shadow-glow: 0 0 45px rgba(74, 94, 255, 0.45);
+}
+

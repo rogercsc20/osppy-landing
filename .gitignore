@@ -1,0 +1,57 @@
+# --- Node Dependencies ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Environment Variables ---
+.env
+.env*.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# --- Next.js Build Outputs ---
+.next/
+out/
+dist/
+build/
+.next-static/
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+logs/
+*.log.*
+debug.log
+/.vercel/
+
+# --- OS Specific ---
+ehthumbs.db
+Icon?
+.Spotlight-V100
+.Trashes
+
+# --- Editor Folders ---
+.vscode/
+.idea/
+*.swp
+
+# --- Typescript ---
+*.tsbuildinfo
+next-env.d.ts
+
+# --- Misc ---
+*.pem
+*.orig
+coverage/
+
+# --- Local caches ---
+.cache/
+.parcel-cache/
+
