@@ -68,15 +68,7 @@ export default function WhyOsppy() {
           <div className="text-center mt-16">
             <Link
               href="/about"
-              className="
-                inline-block px-8 py-4
-                text-sm md:text-base font-medium
-                text-[var(--osppy-primary)]
-                hover:text-[var(--osppy-primary-hover)]
-                underline underline-offset-4 decoration-[var(--osppy-primary)]
-                hover:decoration-[var(--osppy-primary-hover)]
-                transition
-              "
+              className=" inline-block px-8 py-4 text-sm md:text-base font-medium text-[var(--osppy-primary)] hover:text-[var(--osppy-primary-hover)] underline underline-offset-4 decoration-[var(--osppy-primary)] hover:decoration-[var(--osppy-primary-hover)] transition"
             >
               Learn how we work →
             </Link>

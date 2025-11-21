@@ -68,15 +68,7 @@ export default function Features() {
       <div className="mt-10 text-center">
         <Link
           href="/about"
-          className="
-            inline-block px-6 py-3
-            text-sm md:text-base font-medium
-            text-[var(--osppy-primary)]
-            hover:text-[var(--osppy-primary-hover)]
-            underline underline-offset-4 decoration-[var(--osppy-primary)]
-            hover:decoration-[var(--osppy-primary-hover)]
-            transition
-          "
+          className="inline-block px-6 py-3 text-sm md:text-base font-medium text-[var(--osppy-primary)] hover:text-[var(--osppy-primary-hover)] underline underline-offset-4 decoration-[var(--osppy-primary)] hover:decoration-[var(--osppy-primary-hover)] transition"
         >
           How we work →
         </Link>

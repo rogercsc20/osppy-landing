@@ -6,15 +6,16 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function Logo() {
   const { resolvedTheme } = useTheme();
-  const isClient = typeof window !== "undefined";
 
   const HEIGHT = 30;
 
-  const srcLight = "/images/logos/osppy_white_blue.png";
-  const srcDark = "/images/logos/osppy-dark.png";
+  const LIGHT_LOGO = "/images/logos/osppy_white_blue.png";
+  const DARK_LOGO = "/images/logos/osppy-dark.png";
 
-  const showDarkLogo = resolvedTheme === "dark"; 
-  // DARK background → light logo
+  // Dark-only UI right now → we want the light logo on dark background.
+  const effectiveTheme = resolvedTheme ?? "dark";
+  const useLightLogo = effectiveTheme === "dark";
+  const logoSrc = useLightLogo ? LIGHT_LOGO : DARK_LOGO;
 
   return (
     <div
@@ -23,7 +24,7 @@ export default function Logo() {
     >
       <AnimatePresence mode="wait">
         <motion.div
-          key={isClient ? (showDarkLogo ? "light" : "dark") : "ssr"}
+          key={logoSrc}
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
@@ -31,8 +32,7 @@ export default function Logo() {
           className="absolute inset-0 flex items-center"
         >
           <Image
-            // SSR ALWAYS uses LIGHT LOGO
-            src={showDarkLogo ? srcLight : srcDark}
+            src={logoSrc}
             alt="OSPPY"
             height={HEIGHT}
             width={HEIGHT * 4}

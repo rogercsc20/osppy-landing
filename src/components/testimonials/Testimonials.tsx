@@ -25,16 +25,13 @@ const testimonials = [
 export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Detect client without state — recommended by React
-  const isClient = typeof window !== "undefined";
-
-  /** Smooth horizontal scroll on wheel — iOS-safe */
+  /** Smooth horizontal scroll on wheel — desktop */
   useEffect(() => {
-    if (!isClient) return;
     const el = scrollRef.current;
     if (!el) return;
 
     const handleWheel = (e: WheelEvent) => {
+      // Only intercept vertical wheel -> convert to horizontal
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
         el.scrollLeft += e.deltaY * 0.5;
@@ -43,12 +40,12 @@ export default function Testimonials() {
 
     el.addEventListener("wheel", handleWheel, { passive: false });
     return () => el.removeEventListener("wheel", handleWheel);
-  }, [isClient]);
+  }, []);
 
   return (
     <section id="testimonials" className="relative py-32">
       <div className="mx-auto max-w-[var(--osppy-max-width)] px-6">
-
+        
         <FadeIn>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-center mb-14 leading-[1.2]">
             What Our Clients Say
@@ -58,54 +55,39 @@ export default function Testimonials() {
           </h2>
         </FadeIn>
 
-        {/* Fade Edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--osppy-bg)] to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--osppy-bg)] to-transparent z-10" />
+        {/* Left & Right fade gradients */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--posppy-bg)] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--posppy-bg)] to-transparent z-10" />
 
-        {/* Horizontal Scroll */}
+        {/* ← MOBILE/TABLET/PC: always horizontal scroll */}
         <div
           ref={scrollRef}
-          className="
-            flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory
-            scrollbar-none select-none md:cursor-grab cursor-default
-            -mx-4 px-4
-          "
+          className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none select-none md:cursor-grab cursor-default -mx-4 px-4"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
-          {testimonials.map((t, i) => {
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              className="min-w-[280px] md:min-w-[360px] snap-start p-8 rounded-[var(--osppy-radius)] bg-[var(--osppy-bg-elevated)] border border-white/10 shadow-[var(--osppy-shadow-soft)]"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+            >
+              <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
+                “{t.text}”
+              </p>
 
-            const Wrapper = isClient ? motion.div : "div";
-
-            return (
-              <Wrapper
-                key={i}
-                className="
-                  min-w-[280px] md:min-w-[360px] snap-start p-8
-                  rounded-[var(--osppy-radius)]
-                  bg-[var(--osppy-bg-elevated)]
-                  border border-white/10
-                  shadow-[var(--osppy-shadow-soft)]
-                "
-                {...(isClient && {
-                  initial: { opacity: 0, y: 12 },
-                  whileInView: { opacity: 1, y: 0 },
-                  viewport: { once: true },
-                  transition: { duration: 0.5, delay: i * 0.05 }
-                })}
-              >
-                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  “{t.text}”
-                </p>
-
-                <div className="mt-6">
-                  <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-sm text-[var(--osppy-text-muted)]">{t.role}</p>
-                </div>
-              </Wrapper>
-            );
-          })}
+              <div className="mt-6">
+                <p className="font-semibold text-white">{t.name}</p>
+                <p className="text-sm text-[var(--osppy-text-muted)]">{t.role}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );
 }
+

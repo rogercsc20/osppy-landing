@@ -69,31 +69,15 @@ export default function Pricing() {
 
               {/* Card */}
               <div
-                className={`group relative p-10 rounded-[var(--osppy-radius)]
-                border border-white/10 bg-[var(--osppy-bg-elevated)]
-                shadow-[var(--osppy-shadow-soft)]
-                transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]
-                hover:-translate-y-2 hover:border-[var(--osppy-card-border-hover)]
-                hover:bg-[var(--osppy-card-hover)]
-                hover:shadow-[var(--osppy-glow-soft)]`}
+                className={`group relative p-10 rounded-[var(--osppy-radius)] border border-white/10 bg-[var(--osppy-bg-elevated)] shadow-[var(--osppy-shadow-soft)] transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-2 hover:border-[var(--osppy-card-border-hover)] hover:bg-[var(--osppy-card-hover)] hover:shadow-[var(--osppy-glow-soft)]`}
               >
 
-                {/* Radial Highlight */}
-                <div className="
-                  absolute inset-0 opacity-0 group-hover:opacity-100
-                  transition-opacity duration-500 pointer-events-none
-                  rounded-[var(--osppy-radius)]
-                  bg-[radial-gradient(circle_at_center,var(--osppy-primary-soft),transparent_70%)]
-                " />
+                {/* Radial Highlight — FIXED SINGLE LINE */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[var(--osppy-radius)] bg-[radial-gradient(circle_at_center,var(--osppy-primary-soft),transparent_70%)]" />
 
-                {/* Highlighted glow */}
+                {/* Highlighted glow — FIXED SINGLE LINE */}
                 {p.highlighted && (
-                  <div className="
-                    absolute inset-0 rounded-[var(--osppy-radius)]
-                    shadow-[var(--osppy-glow-strong)]
-                    opacity-40 group-hover:opacity-60
-                    transition-opacity
-                  " />
+                  <div className="absolute inset-0 rounded-[var(--osppy-radius)] shadow-[var(--osppy-glow-strong)] opacity-40 group-hover:opacity-60 transition-opacity" />
                 )}
 
                 {/* Content */}
