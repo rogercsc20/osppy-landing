@@ -24,23 +24,25 @@ const testimonials = [
 
 export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Detect client to avoid SSR hydration mismatches
   const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(true), []);
 
-  /** Smooth wheel scrolling */
+  useEffect(() => {
+    setIsClient(true);
+    }, []);
+
+  /** Smooth horizontal scroll on wheel — iOS-safe */
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        el.scrollLeft += e.deltaY * 0.6;
+        e.preventDefault();
+        el.scrollLeft += e.deltaY * 0.5;
       }
     };
 
-    el.addEventListener("wheel", handleWheel);
+    el.addEventListener("wheel", handleWheel, { passive: false });
     return () => el.removeEventListener("wheel", handleWheel);
   }, []);
 
@@ -57,16 +59,13 @@ export default function Testimonials() {
           </h2>
         </FadeIn>
 
-        {/* Fade edges */}
+        {/* Fade Edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--osppy-bg)] to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--osppy-bg)] to-transparent z-10" />
 
-        {/* Scroll / Drag container */}
-        <motion.div
+        {/* Always render the same HTML — hydration safe */}
+        <div
           ref={scrollRef}
-          drag={isClient ? "x" : false}
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
           className="
             flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory
             scrollbar-none select-none md:cursor-grab cursor-default
@@ -74,10 +73,13 @@ export default function Testimonials() {
           "
           style={{ WebkitOverflowScrolling: "touch" }}
         >
-          {testimonials.map((t, i) =>
-            isClient ? (
-              /** CLIENT VERSION WITH ANIMATIONS */
-              <motion.div
+          {testimonials.map((t, i) => {
+
+            // Wrapper: always same HTML, motion activates only on client
+            const Wrapper = isClient ? motion.div : "div";
+
+            return (
+              <Wrapper
                 key={i}
                 className="
                   min-w-[280px] md:min-w-[360px] snap-start p-8
@@ -86,10 +88,12 @@ export default function Testimonials() {
                   border border-white/10
                   shadow-[var(--osppy-shadow-soft)]
                 "
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
+                {...(isClient && {
+                  initial: { opacity: 0, y: 12 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: { duration: 0.5, delay: i * 0.05 }
+                })}
               >
                 <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
                   “{t.text}”
@@ -97,37 +101,12 @@ export default function Testimonials() {
 
                 <div className="mt-6">
                   <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-sm text-[var(--osppy-text-muted)]">
-                    {t.role}
-                  </p>
+                  <p className="text-sm text-[var(--osppy-text-muted)]">{t.role}</p>
                 </div>
-              </motion.div>
-            ) : (
-              /** SERVER VERSION (NO MOTION, FIXED CLASSES) */
-              <div
-                key={i}
-                className="
-                  min-w-[280px] md:min-w-[360px] snap-start p-8
-                  rounded-[var(--osppy-radius)]
-                  bg-[var(--osppy-bg-elevated)]
-                  border border-white/10
-                  shadow-[var(--osppy-shadow-soft)]
-                "
-              >
-                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  “{t.text}”
-                </p>
-
-                <div className="mt-6">
-                  <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-sm text-[var(--osppy-text-muted)]">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            )
-          )}
-        </motion.div>
+              </Wrapper>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

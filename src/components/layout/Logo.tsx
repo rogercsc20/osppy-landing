@@ -11,9 +11,11 @@ export default function Logo() {
 
   const HEIGHT = 30;
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const srcLight = "/images/logos/osppy-light.png";
+  const srcLight = "/images/logos/osppy_white_blue.png";
   const srcDark = "/images/logos/osppy-dark.png";
 
   if (!mounted) {

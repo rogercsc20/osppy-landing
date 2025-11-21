@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import FadeIn from "../animations/FadeIn";
 import { BedDouble, Truck, ShoppingBag } from "lucide-react";
 
@@ -72,6 +73,26 @@ export default function UseCases() {
             </FadeIn>
           ))}
         </div>
+
+        {/* CTA BUTTON */}
+        <FadeIn delay={0.4}>
+          <div className="mt-14 text-center">
+            <Link
+              href="/use-cases"
+              className="
+                inline-block px-6 py-3
+                text-sm md:text-base font-medium
+                text-[var(--osppy-primary)]
+                hover:text-[var(--osppy-primary-hover)]
+                underline underline-offset-4 decoration-[var(--osppy-primary)]
+                hover:decoration-[var(--osppy-primary-hover)]
+                transition
+              "
+            >
+              Discover everything we can help you automate →
+            </Link>
+          </div>
+        </FadeIn>
 
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import FadeIn from "../animations/FadeIn";
 import { ShieldCheck, Cpu, Zap, Layers } from "lucide-react";
 
@@ -41,13 +42,12 @@ export default function Features() {
 
         <FadeIn>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-center mb-12">
-            Built with  
+            Built with
             <span className="block text-[var(--osppy-primary)]">Precision & Power</span>
           </h2>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-10">
-
           {features.map((f) => (
             <FadeIn key={f.title} delay={f.delay}>
               <div className="p-10 rounded-[var(--osppy-radius)] bg-[var(--osppy-bg-elevated)] border border-white/10 shadow-[var(--osppy-shadow-soft)] hover:shadow-[var(--osppy-shadow-glow)] transition hover:-translate-y-1">
@@ -61,9 +61,27 @@ export default function Features() {
               </div>
             </FadeIn>
           ))}
-
         </div>
+
       </div>
+
+      <div className="mt-10 text-center">
+        <Link
+          href="/about"
+          className="
+            inline-block px-6 py-3
+            text-sm md:text-base font-medium
+            text-[var(--osppy-primary)]
+            hover:text-[var(--osppy-primary-hover)]
+            underline underline-offset-4 decoration-[var(--osppy-primary)]
+            hover:decoration-[var(--osppy-primary-hover)]
+            transition
+          "
+        >
+          How we work →
+        </Link>
+      </div>
+
     </section>
   );
 }

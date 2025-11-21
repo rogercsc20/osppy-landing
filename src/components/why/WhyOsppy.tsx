@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import FadeIn from "../animations/FadeIn";
 import { CheckCircle2, Crown, GaugeCircle, Settings } from "lucide-react";
 
@@ -47,7 +48,6 @@ export default function WhyOsppy() {
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-10">
-
           {reasons.map((reason) => (
             <FadeIn key={reason.title} delay={reason.delay}>
               <div className="p-10 rounded-[var(--osppy-radius)] bg-[var(--osppy-bg-elevated)] border border-white/10 shadow-[var(--osppy-shadow-soft)] hover:shadow-[var(--osppy-shadow-glow)] transition hover:-translate-y-1 h-full">
@@ -61,8 +61,28 @@ export default function WhyOsppy() {
               </div>
             </FadeIn>
           ))}
-
         </div>
+
+        {/* CTA BUTTON */}
+        <FadeIn delay={0.5}>
+          <div className="text-center mt-16">
+            <Link
+              href="/about"
+              className="
+                inline-block px-8 py-4
+                text-sm md:text-base font-medium
+                text-[var(--osppy-primary)]
+                hover:text-[var(--osppy-primary-hover)]
+                underline underline-offset-4 decoration-[var(--osppy-primary)]
+                hover:decoration-[var(--osppy-primary-hover)]
+                transition
+              "
+            >
+              Learn how we work →
+            </Link>
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );

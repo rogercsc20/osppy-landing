@@ -1,120 +1,166 @@
 "use client";
 
 import FadeIn from "@/components/animations/FadeIn";
+import { LightBulbIcon, SparklesIcon, CubeIcon } from "@heroicons/react/24/outline";
 
 export default function AboutPage() {
   return (
     <section className="relative py-32">
+
       <div className="mx-auto max-w-[var(--osppy-max-width)] px-6">
 
         {/* HERO */}
         <FadeIn>
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center mb-6">
-            Built with Care.  
-            <span className="block text-[var(--osppy-primary)]">
-              Designed for Real Businesses.
-            </span>
-          </h1>
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+              Built by Engineers.
+              <span className="block text-[var(--osppy-primary)]">
+                Crafted for Real Operations.
+              </span>
+            </h1>
 
-          <p className="text-lg md:text-xl text-[var(--osppy-text-secondary)] max-w-3xl mx-auto text-center leading-relaxed">
-            OSPPY was created with a simple belief: people deserve technology that truly helps them.
-            Not systems that add confusion or tools that demand complexity.  
-            Just clarity. Support. And intelligence that quietly makes work easier.
-          </p>
-        </FadeIn>
-
-        {/* OUR STORY */}
-        <FadeIn delay={0.2}>
-          <div className="mt-20">
-            <h2 className="text-3xl font-semibold mb-6">Our Story</h2>
-
-            <p className="text-[var(--osppy-text-secondary)] leading-relaxed text-lg">
-              We started OSPPY after years of watching businesses struggle with tools that were
-              supposed to make life easier — but instead created even more work.  
-              Teams drowned in messages, processes, spreadsheets, and manual tasks.  
-              Everyone was overwhelmed, but nobody had the time or support to fix it.  
-
-              <br /><br />
-
-              So we built something different:  
-              **An AI-driven operations layer that actually understands your business — and cares about it.**
-
-              <br /><br />
-
-              No pressure.  
-              No unrealistic promises.  
-              Just thoughtful, honest technology made by people who listen first and automate second.
+            <p className="text-lg md:text-xl text-[var(--osppy-text-secondary)] leading-relaxed">
+              OSPPY wasn&apos;t born from theory.  
+              It grew out of years of solving real operational problems across hotels,
+              logistics, retail, and service teams — one system, one integration, one workflow at a time.
             </p>
           </div>
         </FadeIn>
 
-        {/* OUR VALUES */}
-        <FadeIn delay={0.3}>
-          <div className="mt-24">
-            <h2 className="text-3xl font-semibold mb-6">What We Believe</h2>
+        {/* STORY BLOCK */}
+        <FadeIn delay={0.15}>
+          <div className="
+            mt-24 p-10 rounded-[var(--osppy-radius)]
+            bg-[var(--osppy-bg-elevated)]/70
+            border border-white/10
+            backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.25)]
+            max-w-3xl mx-auto
+          ">
+            <h2 className="text-3xl font-semibold mb-6">Where We Come From</h2>
 
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-xl font-medium mb-2">1. Intelligence Should Feel Natural</h3>
+            <p className="text-[var(--osppy-text-secondary)] leading-relaxed text-lg">
+              Before OSPPY, we were independent engineers working on automation, AI, and
+              data systems for very different businesses. But every project revealed the
+              same reality: companies were drowning in manual processes and fragmented tools
+              that didn’t understand how they actually operated.
+
+              <br /><br />
+
+              A shared project brought us together — and the alignment was immediate.
+              The standards were the same. The approach to engineering was the same.
+              The obsession with building things properly was the same.
+
+              <br /><br />
+
+              OSPPY was formed to unify that experience under one principle:
+              build technology that strengthens operations quietly, intelligently,
+              and with long-term reliability.
+            </p>
+          </div>
+        </FadeIn>
+
+        {/* PHILOSOPHY — MODERN (mission+vision without naming them) */}
+        <FadeIn delay={0.25}>
+          <div className="mt-32">
+            <h2 className="text-3xl font-semibold text-center mb-14">
+              What Drives Our Work
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-10">
+
+              {/* CARD 1 */}
+              <div className="
+                p-8 rounded-[var(--osppy-radius)]
+                bg-gradient-to-b from-white/5 to-transparent
+                border border-white/10
+                shadow-[0_0_30px_rgba(0,0,0,0.15)]
+              ">
+                <LightBulbIcon className="w-10 h-10 text-[var(--osppy-primary)] mb-4" />
+                <h3 className="text-xl font-medium mb-2">Technology That Understands Work</h3>
                 <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  AI shouldn’t be intimidating.  
-                  It shouldn’t replace people.  
-                  It should **support** them — quietly, intelligently, in the background.  
+                  We design systems that adapt to each business — its rhythm, patterns,
+                  and real constraints. Software shouldn’t force a way of working;
+                  it should enhance the one that already exists.
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-medium mb-2">2. Every Business Deserves Clarity</h3>
+              {/* CARD 2 */}
+              <div className="
+                p-8 rounded-[var(--osppy-radius)]
+                bg-gradient-to-b from-white/5 to-transparent
+                border border-white/10
+                shadow-[0_0_30px_rgba(0,0,0,0.15)]
+              ">
+                <SparklesIcon className="w-10 h-10 text-[var(--osppy-primary)] mb-4" />
+                <h3 className="text-xl font-medium mb-2">Clarity Over Complexity</h3>
                 <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  When information is scattered and workflows are chaotic, people suffer.  
-                  Decision-making slows down. Communication breaks.  
-                  OSPPY is built to bring everything together into one calm, organized system.
+                  Modern operations generate noise.  
+                  Our job is to remove it — aligning communication, data,
+                  and processes into one clean, understandable system.
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-medium mb-2">3. Support Should Be Human</h3>
+              {/* CARD 3 */}
+              <div className="
+                p-8 rounded-[var(--osppy-radius)]
+                bg-gradient-to-b from-white/5 to-transparent
+                border border-white/10
+                shadow-[0_0_30px_rgba(0,0,0,0.15)]
+              ">
+                <CubeIcon className="w-10 h-10 text-[var(--osppy-primary)] mb-4" />
+                <h3 className="text-xl font-medium mb-2">Precision Over Assumptions</h3>
                 <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  We don’t believe in selling something and disappearing.  
-                  When we work with a client, we care about their goals — their real goals.  
-                  The people behind the business matter, and our technology is built for them.
+                  Every automation, integration, and workflow is crafted intentionally.
+                  No templates. No “one size fits all.”  
+                  Just engineering done with accuracy and care.
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-medium mb-2">4. No Pressure. Ever.</h3>
-                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
-                  Our approach is simple:  
-                  **A short, honest conversation with someone technical who understands operations.**  
-                  No obligation, no commitments, no sales scripts.
-                </p>
-              </div>
             </div>
           </div>
         </FadeIn>
 
-        {/* HOW WE WORK */}
-        <FadeIn delay={0.4}>
-          <div className="mt-24">
-            <h2 className="text-3xl font-semibold mb-6">How We Work</h2>
+        {/* VALUES */}
+        <FadeIn delay={0.3}>
+          <div className="mt-32 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-10 text-center">Values We Build With</h2>
 
-            <p className="text-[var(--osppy-text-secondary)] leading-relaxed text-lg mb-8">
-              Every company is different, so we take a simple approach:
-            </p>
+            <div className="grid md:grid-cols-2 gap-8">
 
-            <ul className="space-y-6 text-[var(--osppy-text-secondary)] text-lg leading-relaxed">
-              <li>• We listen closely to understand your pains and priorities.</li>
-              <li>• We map your operations and find the bottlenecks that drain time.</li>
-              <li>• We design smart automations that feel natural and helpful.</li>
-              <li>• We integrate with your tools, your workflows, and your team.</li>
-              <li>• We stay with you — improving, optimizing, adjusting.</li>
-              <li>• And we keep everything simple, stable, and reliable.</li>
-            </ul>
+              <div className="p-6 rounded-xl bg-[var(--osppy-bg-elevated)] border border-white/10">
+                <h4 className="text-xl mb-2 font-medium">Reliability</h4>
+                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
+                  Systems should run quietly and consistently — especially when people depend on them.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl bg-[var(--osppy-bg-elevated)] border border-white/10">
+                <h4 className="text-xl mb-2 font-medium">Transparency</h4>
+                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
+                  Clear logic. Clear processes. Clear expectations.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl bg-[var(--osppy-bg-elevated)] border border-white/10">
+                <h4 className="text-xl mb-2 font-medium">Longevity</h4>
+                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
+                  We design for scale, future changes, and operational growth.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl bg-[var(--osppy-bg-elevated)] border border-white/10">
+                <h4 className="text-xl mb-2 font-medium">Discipline</h4>
+                <p className="text-[var(--osppy-text-secondary)] leading-relaxed">
+                  Good engineering is a craft — one we treat with seriousness and respect.
+                </p>
+              </div>
+
+            </div>
           </div>
         </FadeIn>
 
         {/* CTA */}
-        <FadeIn delay={0.6}>
+        <FadeIn delay={0.45}>
           <div className="text-center mt-28">
             <a
               href="/contact"

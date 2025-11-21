@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -8,7 +8,13 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export async function POST(req: Request) {
+interface ContactPayload {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export async function POST(req: NextRequest) {
   try {
     // ----------- SAFETY LAYER 1: Ensure body exists -----------
     const raw = await req.text();
@@ -22,11 +28,11 @@ export async function POST(req: Request) {
     }
 
     // ----------- SAFETY LAYER 2: Ensure JSON is valid ----------
-    let data: any;
+    let data: ContactPayload;
     try {
-      data = JSON.parse(raw);
+      data = JSON.parse(raw) as ContactPayload;
     } catch (err) {
-      console.warn("❌ Invalid JSON received");
+      console.warn("❌ Invalid JSON received", err);
       return NextResponse.json(
         { success: false, error: "Invalid JSON" },
         { status: 400 }

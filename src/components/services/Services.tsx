@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Code, Bot, BarChart3, Workflow } from "lucide-react";
 import FadeIn from "../animations/FadeIn";
 
@@ -63,6 +64,25 @@ export default function Services() {
           ))}
         </div>
       </div>
+      <FadeIn delay={0.2}>
+  <div className="mt-10 text-center">
+    <Link
+      href="/services"
+      className="
+        inline-block px-6 py-3
+        text-sm md:text-base font-medium
+        text-[var(--osppy-primary)]
+        hover:text-[var(--osppy-primary-hover)]
+        underline underline-offset-4 decoration-[var(--osppy-primary)]
+        hover:decoration-[var(--osppy-primary-hover)]
+        transition
+      "
+    >
+      Explore all our services →
+    </Link>
+  </div>
+</FadeIn>
+
     </section>
   );
 }

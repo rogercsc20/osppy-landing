@@ -131,7 +131,7 @@ export default function UseCasesPage() {
             </a>
 
             <p className="text-[var(--osppy-text-secondary)] mt-4">
-              We'll analyze your business and show where automation delivers the highest ROI.
+              We&apos;ll analyze your business and show where automation delivers the highest ROI.
             </p>
           </div>
         </FadeIn>

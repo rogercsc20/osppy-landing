@@ -56,7 +56,7 @@ export default function CareersPage() {
                   description:
                     "We believe in empathy, honesty, and long-term thinking — in work and in life.",
                 },
-              ].map((v, i) => (
+              ].map((v) => (
                 <div
                   key={v.title}
                   className="p-8 rounded-[var(--osppy-radius)] bg-[var(--osppy-bg-elevated)]

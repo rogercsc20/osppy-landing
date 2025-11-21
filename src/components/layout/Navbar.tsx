@@ -273,7 +273,7 @@ function MegaSection({
   desc3,
   link,
   linkLabel
-}: any) {
+}: Record<string, string>) {
   return (
     <div className="space-y-8 text-sm text-[var(--osppy-text-secondary)]">
       <div className="grid gap-10 md:grid-cols-3">
