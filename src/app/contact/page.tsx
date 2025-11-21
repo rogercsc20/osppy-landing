@@ -10,26 +10,27 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
+    const data = new FormData(e.currentTarget);
+
     const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
+     name: data.get("name") as string,
+     email: data.get("email") as string,
+     message: data.get("message") as string,
+  };
 
     const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(formData),
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     body: JSON.stringify(formData),
     });
 
     setLoading(false);
 
-    if (res.ok) {
-      setSent(true);
-    }
-  };
+    if (res.ok) setSent(true);
+};
 
-  return (
+
+     return (
     <section className="py-32 px-6 mx-auto max-w-[800px]">
       <h1 className="text-4xl font-semibold mb-8 tracking-tight">
         Contact Us

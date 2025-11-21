@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import FadeIn from "../animations/FadeIn";
 import { motion } from "framer-motion";
 
@@ -24,14 +24,13 @@ const testimonials = [
 
 export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-    }, []);
+  // Detect client without state — recommended by React
+  const isClient = typeof window !== "undefined";
 
   /** Smooth horizontal scroll on wheel — iOS-safe */
   useEffect(() => {
+    if (!isClient) return;
     const el = scrollRef.current;
     if (!el) return;
 
@@ -44,7 +43,7 @@ export default function Testimonials() {
 
     el.addEventListener("wheel", handleWheel, { passive: false });
     return () => el.removeEventListener("wheel", handleWheel);
-  }, []);
+  }, [isClient]);
 
   return (
     <section id="testimonials" className="relative py-32">
@@ -63,7 +62,7 @@ export default function Testimonials() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--osppy-bg)] to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--osppy-bg)] to-transparent z-10" />
 
-        {/* Always render the same HTML — hydration safe */}
+        {/* Horizontal Scroll */}
         <div
           ref={scrollRef}
           className="
@@ -75,7 +74,6 @@ export default function Testimonials() {
         >
           {testimonials.map((t, i) => {
 
-            // Wrapper: always same HTML, motion activates only on client
             const Wrapper = isClient ? motion.div : "div";
 
             return (
@@ -111,4 +109,3 @@ export default function Testimonials() {
     </section>
   );
 }
-
